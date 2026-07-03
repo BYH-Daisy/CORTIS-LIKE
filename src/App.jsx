@@ -275,6 +275,22 @@ export default function App() {
     }
   }, [currentLyricIndex])
 
+  useEffect(() => {
+    const next = (currentSlide + 1) % images.length
+    const prev = (currentSlide - 1 + images.length) % images.length
+    const link = document.createElement('link')
+    link.rel = 'prefetch'
+    link.as = 'image'
+    link.href = images[next]
+    document.head.appendChild(link)
+    const link2 = document.createElement('link')
+    link2.rel = 'prefetch'
+    link2.as = 'image'
+    link2.href = images[prev]
+    document.head.appendChild(link2)
+    return () => { link.remove(); link2.remove() }
+  }, [currentSlide])
+
 
 
   return (
@@ -347,15 +363,13 @@ export default function App() {
             ref={stageRef}
           >
             <div className="slides">
-              {images.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt=""
-                  className={i === currentSlide ? 'active' : ''}
-                  onClick={() => setSlideshowActive(v => !v)}
-                />
-              ))}
+              <img
+                key={currentSlide}
+                src={images[currentSlide]}
+                alt=""
+                className="active"
+                onClick={() => setSlideshowActive(v => !v)}
+              />
             </div>
             <div className="danmaku-layer" ref={danmakuLayerRef} />
           </div>
