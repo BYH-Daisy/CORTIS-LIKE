@@ -2,6 +2,7 @@
 
 > 学生：毕栎涵 | 2025 计算机思维概论结课作业
 > 课程：2025 级广播电视编导（文艺编导方向）
+> **部署网站：[https://cortis-like-bghc.vercel.app/#/](https://cortis-like-bghc.vercel.app/#/)**
 
 ---
 
